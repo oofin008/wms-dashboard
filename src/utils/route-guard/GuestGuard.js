@@ -7,7 +7,6 @@ import { Redirect } from 'react-router-dom';
 import config from '../../config';
 
 //-----------------------|| GUEST GUARD ||-----------------------//
-
 /**
  * Guest guard for routes having no auth required
  * @param {PropTypes.node} children children element/node

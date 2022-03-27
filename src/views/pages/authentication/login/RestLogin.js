@@ -107,16 +107,17 @@ const RestLogin = (props, { ...others }) => {
                 onSubmit={(values, { setErrors, setStatus, setSubmitting }) => {
                     try {
                         axios
-                            .post( configData.API_SERVER + 'users/login', {
+                            .post(configData.API_SERVER + 'auth/signin', {
                                 password: values.password,
                                 email: values.email
                             })
                             .then(function (response) {
-                                if (response.data.success) {
+								console.log(response);
+                                if (response.status === 200) {
                                     console.log(response.data);
                                     dispatcher({
                                         type: ACCOUNT_INITIALIZE,
-                                        payload: { isLoggedIn: true, user: response.data.user, token: response.data.token }
+                                        payload: { isLoggedIn: true, user: 'response.data.user', token: response.data.access_token }
                                     });
                                     if (scriptedRef.current) {
                                         setStatus({ success: true });
